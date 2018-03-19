@@ -9687,7 +9687,8 @@ static int idle_balance(struct rq *this_rq)
 		u64 t0, domain_cost;
 
 		if (!(sd->flags & SD_LOAD_BALANCE)) {
-			if (time_after_eq(jiffies, sd->groups->sgc->next_update))
+			if (time_after_eq(jiffies,
+					  sd->groups->sgc->next_update))
 				update_group_capacity(sd, this_cpu);
 			continue;
 		}
@@ -10050,7 +10051,8 @@ static void rebalance_domains(struct rq *rq, enum cpu_idle_type idle)
 		max_cost += sd->max_newidle_lb_cost;
 
 		if (!(sd->flags & SD_LOAD_BALANCE)) {
-			if (time_after_eq(jiffies, sd->groups->sgc->next_update))
+			if (time_after_eq(jiffies,
+					  sd->groups->sgc->next_update))
 				update_group_capacity(sd, cpu);
 			continue;
 		}
