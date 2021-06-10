@@ -111,10 +111,6 @@ config FIH_HWCONFIG
 	help
 	  support fih hwcfg/swid/hwid function
 
-config FIH_DEVICE_TREE_DEBUG
-	bool "FIH Device Tree Debug"
-	default y
-
 config FIH_HALL_SENSOR
 	bool "FIH Hall sensor"
 	default y
