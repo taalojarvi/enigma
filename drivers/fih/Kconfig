@@ -118,12 +118,6 @@ config FIH_DEVICE_TREE_DEBUG
 config FIH_HALL_SENSOR
 	bool "FIH Hall sensor"
 	default y
-
-config FIH_CPU_USAGE
-	bool "FIH cpu usage information"
-	default y
-	help
-	  support fih cpu usage information
 endmenu
 
 #Kernel Module sign key from FIH
