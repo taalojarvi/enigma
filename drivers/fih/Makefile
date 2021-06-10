@@ -15,5 +15,4 @@ obj-$(CONFIG_FIH_HALL_SENSOR) += hallsensor/
 obj-$(CONFIG_FIH_HWCONFIG) += fih_swid.o
 obj-y += fih_camera_dev.o
 obj-$(CONFIG_FIH_APR) += fih_apr.o
-obj-y += fih_cpu.o
 obj-y += fih_rere.o
