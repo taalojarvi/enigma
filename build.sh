@@ -13,6 +13,7 @@ echo "---------------------------------------"
 make O=out mrproper
 echo "---------------------------------------"
 make O=out ARCH=arm64 enigma_defconfig
+echo "---------------------------------------"
 
 PATH="/home/thanuj/clang/bin:/home/thanuj/arm64-gcc/bin:/home/thanuj/arm-gcc/bin:${PATH}" \
 make -j$(nproc --all) O=out \
@@ -28,6 +29,7 @@ echo "---------------------------------------"
 function dirty_compile() {
 echo "---------------------------------------"
 make O=out ARCH=arm64 enigma_defconfig
+echo "---------------------------------------"
 
 PATH="/home/thanuj/clang/bin:/home/thanuj/arm64-gcc/bin:/home/thanuj/arm-gcc/bin:${PATH}"
 make -j$(nproc --all) O=out \
