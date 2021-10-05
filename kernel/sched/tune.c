@@ -753,8 +753,8 @@ static void write_default_values(struct cgroup_subsys_state *css)
 		{ "audio-app",	0, 0 },
 		{ "background",	-25, 1 },
 		{ "foreground",	0, 1 },
-		{ "rt",		0, 0 },
-		{ "top-app",	1, 3 },
+		{ "rt",		1, 0 },
+		{ "top-app",	3, 1 },
 	};
 	int i;
 
