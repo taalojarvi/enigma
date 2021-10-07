@@ -74,6 +74,12 @@ KBUILD_AFLAGS	+= $(lseinstr) $(vdso32)
 
 KBUILD_CFLAGS	+= $(call cc-ifversion, -ge, 0500, -DCONFIG_ARCH_SUPPORTS_INT128)
 
+#Add compiler optimization for Snapdragon 660
+ifeq ($(cc-name),clang)
+arch-$(CONFIG_ARCH_SDM660)	:= $(call cc-option,-march=armv8-a+crc+crpyto - mcpu=cortex-a53+crc+crpto)
+tune-$(CONFIG_ARCH_SDM660)	:= -mtune=cortex-a53
+endif
+
 ifeq ($(CONFIG_CPU_BIG_ENDIAN), y)
 KBUILD_CPPFLAGS	+= -mbig-endian
 AS		+= -EB
