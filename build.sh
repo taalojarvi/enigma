@@ -4,6 +4,12 @@ KERNEL_NAME="Enigma"
 DATE=$(date +"%d-%m-%Y-%I-%M")
 FINAL_ZIP=$KERNEL_NAME-$DATE.zip
 
+if [ "$(cat /sys/devices/system/cpu/smt/active)" = "1" ]; then
+                export THREADS=$(expr $(nproc --all) \* 2)
+        else
+                export THREADS=$(nproc --all)
+        fi
+
 ## Funtions
 # Clean Compile
 function clean_compile() {
@@ -16,7 +22,7 @@ make O=out ARCH=arm64 enigma_defconfig
 echo "---------------------------------------"
 
 PATH="/home/thanuj/clang/bin:/home/thanuj/arm64-gcc/bin:/home/thanuj/arm-gcc/bin:${PATH}" \
-make -j$(nproc --all) O=out \
+make -j$THREADS O=out \
                       ARCH=arm64 \
                       CC=clang \
                       CLANG_TRIPLE=aarch64-linux-gnu- \
@@ -32,7 +38,7 @@ make O=out ARCH=arm64 enigma_defconfig
 echo "---------------------------------------"
 
 PATH="/home/thanuj/clang/bin:/home/thanuj/arm64-gcc/bin:/home/thanuj/arm-gcc/bin:${PATH}"
-make -j$(nproc --all) O=out \
+make -j$THREADS O=out \
                       ARCH=arm64 \
                       CC=clang \
                       CLANG_TRIPLE=aarch64-linux-gnu- \
