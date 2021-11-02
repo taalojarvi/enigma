@@ -2,6 +2,9 @@
 
 KERNEL_NAME="Enigma"
 DATE=$(date +"%d-%m-%Y-%I-%M")
+SHORTDATE=$(date +"%d-%m-%Y")
+LOG_DIR=~/logs
+LOG="Build"-$SHORTDATE
 FINAL_ZIP=$KERNEL_NAME-$DATE.zip
 
 if [ "$(cat /sys/devices/system/cpu/smt/active)" = "1" ]; then
@@ -85,11 +88,11 @@ echo -n "Choose :"
 read choose
 
 case $choose in
- 1) dirty_compile
-    make_zip ;;
- 2) clean_compile
-    make_zip ;;
- 3) regen ;;
+ 1) dirty_compile | tee -a "$LOG_DIR"/"$LOG"
+    make_zip | tee -a "$LOG_DIR"/"$LOG" ;;
+ 2) clean_compile | tee -a "$LOG_DIR"/"$LOG" 
+    make_zip | tee -a "$LOG_DIR"/"$LOG" ;;
+ 3) regen | tee -a "$LOG_DIR"/"$LOG" ;;
 esac
 }
 
