@@ -76,6 +76,7 @@ echo "---------------------------------------"
 # Clean Up
 function cleanup(){
 rm -rf /home/thanuj/sdm660/AnyKernel3/Image.gz-dtb
+sed -i 's/\x1b\[[0-9;]*[a-zA-Z]//g' "$LOG_DIR"/"$LOG"
 }
 
 # Menu
